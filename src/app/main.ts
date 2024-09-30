@@ -1,7 +1,8 @@
 import express, { Request, Response } from "express";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT) || 3000;
+const HOST = process.env.HOST || "localhost";
 
 // Routes
 import nullRoute from "./api/basic/none"
@@ -14,7 +15,7 @@ app
     .use("/api/basic/giver", basicRoutes)
     .use("/api/basic/receiver", receiverRoutes);
 
-app.listen(PORT, () => 
+app.listen(PORT, HOST, () => 
 {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://${HOST}:${PORT}`);
 });
